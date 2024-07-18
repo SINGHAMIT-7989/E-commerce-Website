@@ -15,7 +15,7 @@ export const fetchAllProductsAsync = createAsyncThunk(
   'product/fetchAllProducts',
   async () => {
     const response = await fetchAllProducts();
-    // The value we return becomes the `fulfilled` action payload
+    // The value we return becomes the fulfilled action payload
     return response.data;
   }
 );
@@ -24,7 +24,7 @@ export const fetchAllProductByIdAsync = createAsyncThunk(
   'product/fetchProductById',
   async (id) => {
     const response = await fetchProductById(id);
-    // The value we return becomes the `fulfilled` action payload
+    // The value we return becomes the fulfilled action payload
     return response.data;
   }
 );
@@ -33,7 +33,8 @@ export const fetchProductsByFiltersAsync = createAsyncThunk(
   'product/fetchProductsByFilters',
   async ({filter,sort,pagination}) => {
     const response = await fetchProductsByFilters(filter,sort,pagination);
-    // The value we return becomes the `fulfilled` action payload
+    // The value we return becomes the fulfilled action payload
+    console.log(response)
     return response.data;
   }
 );
@@ -42,7 +43,7 @@ export const fetchBrandsAsync = createAsyncThunk(
   'product/fetchBrands',
   async () => {
     const response = await fetchBrands();
-    // The value we return becomes the `fulfilled` action payload
+    // The value we return becomes the fulfilled action payload
     return response.data;
   }
 );
@@ -50,7 +51,7 @@ export const fetchCategoriesAsync = createAsyncThunk(
   'product/fetchCategories',
   async () => {
     const response = await fetchCategories();
-    // The value we return becomes the `fulfilled` action payload
+    // The value we return becomes the fulfilled action payload
     return response.data;
   }
 );

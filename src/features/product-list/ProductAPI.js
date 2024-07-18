@@ -10,9 +10,11 @@ export function fetchAllProducts() {
 
 export function fetchProductById(id) {
   return new Promise(async (resolve) =>{
-    //TODO: we will not hard-code server URL here
+    //TODO: we will not hard-code server URL here 
+  
     const response = await fetch('http://localhost:8080/products/'+id) 
     const data = await response.json()
+   // console.log("i am data ",data)
     resolve({data})
   }
   );
@@ -28,7 +30,7 @@ export function fetchProductsByFilters(filter,sort,pagination) {
     const categoryValues = filter[key];
     if(categoryValues.length){
       const lastCategoryValue = categoryValues[categoryValues.length-1]
-      queryString += `${key}=${lastCategoryValue}&`
+      queryString +=` ${key}=${lastCategoryValue}&`
     }
   }
   for(let key in sort){
@@ -44,7 +46,7 @@ export function fetchProductsByFilters(filter,sort,pagination) {
     //TODO: we will not hard-code server URL here
     const response = await fetch('http://localhost:8080/products?'+queryString) 
     const data = await response.json()
-    const totalItems = await response.headers.get('X-Total-Count')
+    const totalItems = response.headers.get('X-Total-Count')
     resolve({data:{products:data,totalItems:+totalItems}})
   }
   );
